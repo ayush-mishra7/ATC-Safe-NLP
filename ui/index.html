@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATC-SAFE — Narrative Analyzer</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="container">
+        <h1>✈️ ATC-SAFE</h1>
+        <p class="subtitle">AI-Powered ATC Narrative Analysis</p>
+
+        <textarea id="inputText" placeholder="Paste ATC narrative here..."></textarea>
+
+        <button id="analyzeBtn">Analyze</button>
+
+        <div id="resultBox" class="hidden">
+            <h2>📊 Analysis Result</h2>
+
+            <p><strong>Cluster:</strong> <span id="clusterId"></span></p>
+            <p><strong>Label:</strong> <span id="clusterLabel"></span></p>
+
+            <h3>🔑 Top Keywords</h3>
+            <div id="keywords"></div>
+
+            <h3>📄 Summary</h3>
+            <p id="summaryText"></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
