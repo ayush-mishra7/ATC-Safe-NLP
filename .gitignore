@@ -205,3 +205,33 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ============ ATC-SAFE PROJECT EXCLUSIONS ============
+
+# Ignore all data files (handled later by DVC)
+data/
+!data/.gitkeep
+
+# Model artifacts stored externally
+models/
+!models/.gitkeep
+
+# prevent committing notebook autosaves
+.ipynb_checkpoints/
+
+# Virtual environment (if created inside project accidentally)
+venv/
+.env/
+
+# Logs
+*.log
+
+# VS Code settings
+.vscode/
+
+# MLflow artifacts & logs (will configure separately)
+mlruns/
+
+# Cache files
+__pycache__/
+*.pyc
