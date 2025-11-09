@@ -29,7 +29,7 @@ body {
     box-shadow: 0 8px 28px rgba(0,0,0,0.45);
     display: flex;
     flex-direction: column;
-    align-items: center;        /* ✅ center children */
+    align-items: center;
 }
 
 h1 {
@@ -60,7 +60,6 @@ textarea {
     outline: none;
 }
 
-/* ✅ Placeholder text visible */
 textarea::placeholder {
     color: #d9f3ff;
     opacity: 0.85;
@@ -86,7 +85,8 @@ button:hover {
     transform: scale(1.02);
 }
 
-/* Results */
+
+/* ✅ RESULT FIX — allow full page scroll */
 #resultBox {
     margin-top: 25px;
     background: rgba(255,255,255,0.10);
@@ -94,11 +94,29 @@ button:hover {
     border-radius: 10px;
     border: 1px solid rgba(0,150,200,0.4);
     width: 90%;
+    overflow-y: visible !important;
+    max-height: none !important;
 }
 
-.hidden {
-    display: none;
+/* ✅ Suggestion block scroll only */
+.similar-list {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 12px;
+    padding-right: 6px;
 }
+
+/* nice scroll styling */
+.similar-list::-webkit-scrollbar {
+    width: 8px;
+}
+.similar-list::-webkit-scrollbar-thumb {
+    background: #00B4D8;
+    border-radius: 4px;
+}
+
+/* Hidden */
+.hidden { display: none; }
 
 #keywords {
     background: rgba(0,0,0,0.30);
@@ -138,22 +156,21 @@ button:hover {
 #error span {
     font-weight: 600;
 }
+
 @media (max-width: 600px) {
-    .container {
-        padding: 20px;
-    }
-    textarea, button {
-        width: 100%;
-    }
+    .container { padding: 20px; }
+    textarea, button { width: 100%; }
 }
-/* Mouse hover effect for keywords */
+
+/* hover effect for tags */
 #keywords span:hover {
     background: #0077a3;
     color: #e0f7ff;
     transform: scale(1.05);
     transition: 0.2s;
 }
-/* Smooth transitions for result box */
+
+/* Smooth transitions */
 #resultBox {
     transition: background 0.3s, border 0.3s;
 }
@@ -161,41 +178,35 @@ button:hover {
     background: rgba(255,255,255,0.15);
     border: 1px solid rgba(0,150,200,0.7);
 }
-/* Responsive font sizes */
+
+/* Responsive fonts */
 @media (max-width: 400px) {
-    h1 {
-        font-size: 22px;
-    }
-    button {
-        font-size: 16px;
-    }
+    h1 { font-size: 22px; }
+    button { font-size: 16px; }
 }
-/* Scrollbar styling for textarea */
-textarea::-webkit-scrollbar {
-    width: 8px;
-}
+
+/* Scrollbar for textarea */
+textarea::-webkit-scrollbar { width: 8px; }
 textarea::-webkit-scrollbar-thumb {
     background: #00B4D8;
     border-radius: 4px;
 }
-textarea::-webkit-scrollbar-thumb:hover {
-    background: #0096C7;
-}
-/* Focus effect for textarea */
+textarea::-webkit-scrollbar-thumb:hover { background: #0096C7; }
+
 textarea:focus {    
     border-color: #00d9ff;
     box-shadow: 0 0 8px rgba(0, 217, 255, 0.5);
 }
-/* Disabled button state */
+
+/* Disabled btn */
 button:disabled {
     background: #555;
     cursor: not-allowed;
     transform: none;
 }
-button:disabled:hover {
-    background: #555;
-}
-/* Loading spinner animation */
+button:disabled:hover { background: #555; }
+
+/* Spinner */
 #loading span::after {
     content: '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏';
     display: inline-block;
@@ -205,7 +216,8 @@ button:disabled:hover {
     0% { transform: translateY(0); }
     100% { transform: translateY(-100%); }
 }
-/*Mouse pointer hover animation*/
+
+/* Button pulse */
 button:hover {
     animation: pulse 1s infinite;
 }
@@ -214,7 +226,8 @@ button:hover {
     70% { box-shadow: 0 0 0 10px rgba(0, 180, 216, 0); }
     100% { box-shadow: 0 0 0 0 rgba(0, 180, 216, 0); }
 }
-/* Enhanced keyword styling */
+
+/* Keyword elevation */
 #keywords span {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: box-shadow 0.2s;
@@ -222,15 +235,15 @@ button:hover {
 #keywords span:hover {
     box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
-/* Smooth fade-in for result box */
+
+/* Fade-in */
 #resultBox {
     opacity: 0;
     animation: fadeIn 0.5s forwards;
 }
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-/* Dark mode toggle support */
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
     body {
         background: linear-gradient(135deg, #00101E 0%, #00223D 40%, #00375A 70%, #00172D 100%);
@@ -248,16 +261,11 @@ button:hover {
         border: 1px solid rgba(0,150,200,0.6);
     }
 }
-/* Accessibility: High contrast mode */
+
+/* High contrast */
 @media (prefers-contrast: high) {
-    body {
-        background: #000;
-        color: #fff;
-    }
-    .container {
-        background: #111;
-        border: 2px solid #00d9ff;
-    }
+    body { background: #000; color: #fff; }
+    .container { background: #111; border: 2px solid #00d9ff; }
     textarea {
         background: #222;
         border: 2px solid #00d9ff;
@@ -272,7 +280,8 @@ button:hover {
         border: 2px solid #00d9ff;
     }
 }
-/* Mouse hover background water ripple effect */
+
+/* Ripple */
 button:hover {
     position: relative;
     overflow: hidden;
@@ -295,7 +304,8 @@ button:hover::after {
         opacity: 0;
     }
 }
-/* "✈️" icon flying on top of the site in a straight path animation */
+
+/* Flying Plane */
 @keyframes flyAcross {
     0% {
         transform: translateX(-10%) translateY(0) rotate(0deg);
@@ -315,7 +325,5 @@ button:hover::after {
     pointer-events: none;
 }
 
-/* Smooth scrolling for the entire page */
-html {
-    scroll-behavior: smooth;
-}
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
